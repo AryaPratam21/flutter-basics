@@ -1,0 +1,94 @@
+Tugas Latihan 1
+1.Bagaimana cara membuat project Flutter menggunakan terminal/cmd?
+2.Apa aturan dalam memberikan nama project pada Flutter?
+3.Apa saja folder yang secara khusus disiapkan oleh Flutter untuk menjalankan aplikasi pada platform tertentu?
+4.Apa fungsi dari folder .dart_tools dan .idea?
+5.Bagaimana cara membuka project Flutter menggunakan Visual Studio Code?
+6.Mengapa kita perlu memastikan Android SDK terinstall untuk menjalankan aplikasi Flutter di sistem operasi Android?
+7.Apa langkah-langkah untuk mengatasi masalah "Android Toolchain error" pada perintah flutter doctor?
+8.Bagaimana cara menambahkan Android SDK Command-line tools melalui Android Studio?
+9.Apa fungsi dari file .gitignore dalam struktur folder Flutter?
+10.Mengapa file pubspec.yaml sangat penting dalam pengembangan aplikasi Flutter?
+11.Apa yang dimaksud dengan widget dalam konteks Flutter?
+12.Bagaimana pewarisan (inheritance) digunakan dalam pembuatan widget Flutter?
+13.Apa peran widget MaterialApp dalam pembuatan aplikasi Flutter?
+14.Mengapa kita membutuhkan fungsi runApp untuk menjalankan aplikasi Flutter?
+15.Apa kegunaan widget Scaffold dalam struktur aplikasi Flutter?
+16.Bagaimana cara menambahkan app bar dan body pada widget Scaffold?
+17.Apa perbedaan antara Stateless Widget dan Stateful Widget?
+18.Mengapa Stateful Widget disebut memiliki state internal?
+19.Berikan contoh penggunaan Stateless Widget dalam pembuatan aplikasi Flutter.
+20.Berikan contoh penggunaan Stateful Widget dalam pembuatan aplikasi Flutter beserta alasan penggunaannya.
+
+Jawab:
+1.  A.Instal Flutter: Pastikan Flutter sudah terinstal dengan menjalankan flutter --version.
+    B.Buat Project Baru: Jalankan perintah berikut:"flutter create nama_project"
+    C.Masuk ke Folder Project: "cd nama_project"
+    D.Jalankan Project: Gunakan perintah berikut untuk menjalankan project di emulator atau perangkat: "flutter run"
+2.  Dalam memberikan nama project Flutter, ada beberapa aturan yang perlu diperhatikan:
+    A. Karakter yang Diperbolehkan: Nama project hanya boleh mengandung huruf kecil (lowercase), angka, dan tanda hubung (-). Tidak boleh menggunakan spasi atau karakter khusus lain.
+    B. Diawali dengan Huruf: Nama project harus diawali dengan huruf, tidak boleh dimulai dengan angka.
+    C. Tidak Mengandung Spasi: Gunakan tanda hubung (-) jika perlu memisahkan kata. Contoh: my-flutter-app.
+    D. Nama yang Deskriptif: Usahakan memberi nama yang menggambarkan fungsionalitas atau tujuan dari aplikasi yang akan kamu buat.
+3.  1.Android->Folder ini berisi kode dan konfigurasi untuk platform Android.
+    2.ios->Folder ini berisi kode dan konfigurasi untuk platform iOS.
+    3.web->Folder ini berisi file untuk aplikasi yang akan dijalankan di browser (web).
+    4.macos->Folder ini berisi konfigurasi dan kode untuk aplikasi yang berjalan di macOS.
+    5.windows->Folder ini berisi konfigurasi dan kode untuk aplikasi yang berjalan di Windows.
+    6.linux->Folder ini berisi konfigurasi dan kode untuk aplikasi yang berjalan di Linux.
+    Folder Umum nya:
+    >lib: Berisi kode Dart aplikasi utama, yaitu tempat kamu menulis logika aplikasi.
+    >assets: Folder untuk menyimpan asset seperti gambar, font, dan file lainnya yang digunakan dalam aplikasi.
+    >test: Folder untuk menyimpan file unit test atau widget test.
+    >build: Folder hasil build yang dihasilkan setelah kamu menjalankan aplikasi (biasanya tidak perlu dimodifikasi).
+4.  A.Fungsi dari folder .dart_tools adalah untuk menyimpan konfigurasi dan cache internal yang digunakan oleh alat-alat Flutter dan Dart untuk mengoptimalkan kinerja build serta analisis kode.
+    B.Fungsi dari folder .idea adalah untuk menyimpan konfigurasi dan pengaturan proyek yang digunakan oleh IDE JetBrains (seperti IntelliJ IDEA atau Android Studio), termasuk pengaturan build, run, dan plugin.
+5.  Buka Visual Studio Code, pilih "Open Folder", dan pilih folder project Flutter yang ingin dibuka.
+6.  Android SDK menyediakan alat dan API yang diperlukan untuk membangun dan menjalankan aplikasi Flutter di perangkat Android.
+7.  Pastikan Android SDK terinstal dengan benar, setel path SDK di variabel lingkungan, dan pastikan Android Studio terinstal dengan komponen SDK yang diperlukan.
+8.  Buka Android Studio, pergi ke "Preferences" (atau "Settings"), pilih "SDK Manager", dan centang "Android SDK Command-line Tools" di tab SDK Tools.
+9.  Mengabaikan file dan folder tertentu (seperti build/, .dart_tools/, dan .idea/) agar tidak masuk dalam kontrol versi (git).
+10. File ini mendefinisikan dependensi, aset, dan metadata proyek Flutter, yang digunakan oleh sistem build Flutter.
+11. Widget adalah elemen dasar untuk membangun antarmuka pengguna di Flutter, yang menggambarkan tampilan dan perilaku UI.
+12. Widget dapat mewarisi sifat dan metode dari kelas induk untuk membuat widget yang lebih spesifik atau menyesuaikan tampilan dan perilaku.
+13. MaterialApp menyediakan struktur dasar aplikasi dengan tema Material Design, serta menata rute dan pengaturan lainnya.
+14. runApp adalah fungsi pertama yang dijalankan untuk memulai aplikasi Flutter dan merender widget pertama (biasanya MaterialApp).
+15. Scaffold memberikan struktur dasar aplikasi, seperti app bar, drawer, body, floating action button, dan bottom navigation bar.
+16. Scaffold(
+  appBar: AppBar(title: Text("Judul")),
+  body: Center(child: Text("Konten")),
+);
+17. StatelessWidget tidak memiliki state dan hanya sekali dirender, sedangkan StatefulWidget memiliki state internal yang dapat berubah dan merender ulang.
+18. Karena StatefulWidget menyimpan data yang dapat berubah selama siklus hidup widget, mempengaruhi tampilan UI.
+19. class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text("Halo, Flutter!");
+  }
+}
+20. class Counter extends StatefulWidget {
+  @override
+  _CounterState createState() => _CounterState();
+}
+
+class _CounterState extends State<Counter> {
+  int count = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Counter: $count'),
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              count++;
+            });
+          },
+          child: Text('Increment'),
+        ),
+      ],
+    );
+  }
+}
+Alasan: StatefulWidget digunakan karena widget ini perlu mengubah tampilan (count yang berubah) berdasarkan interaksi pengguna (menekan tombol).
